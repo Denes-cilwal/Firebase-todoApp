@@ -1,15 +1,13 @@
-import { FormControl, Input, InputLabel } from "@material-ui/core";
 import { useState } from "react";
 import "./App.css";
 import { ButtonComponent } from "./Components/atoms/Button";
+import { FormComponent } from "./Components/atoms/Form";
 import { Todo } from "./Components/todo";
+import { Typography } from '@material-ui/core';
 
 function App() {
   //setting shorttime memory for react-state , it clears when page refreshes, since it is not save to databases
-  const [todos, setTodos] = useState([
-    "Starting ...",
-    "Adding Data ... ",
-  ]);
+  const [todos, setTodos] = useState(["Starting ...", "Adding Data ... "]);
   const [input, setInput] = useState("");
 
   const addTodosHandler = (event) => {
@@ -23,17 +21,11 @@ function App() {
   };
   return (
     <div className="App">
-      <h1>Todo-App</h1>
-      {/* onchange captures every event trigger */}
-      <FormControl>
-        <InputLabel>Write A :-Todo </InputLabel>
-        <Input
-          value={input}
-          onChange={(event) => {
-            setInput(event.target.value);
-          }}
-        />
-      </FormControl>
+      <Typography>React-App -- 🤖 </Typography>
+      <FormComponent
+      input={input}
+      setInput={setInput}
+      />
 
       <ButtonComponent addTodosHandler={addTodosHandler} input={input} />
       <ul>
