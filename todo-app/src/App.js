@@ -1,11 +1,14 @@
+import { FormControl, Input, InputLabel } from "@material-ui/core";
 import { useState } from "react";
 import "./App.css";
 import { ButtonComponent } from "./Components/atoms/Button";
+import { Todo } from "./Components/todo";
 
 function App() {
+  //setting shorttime memory for react-state , it clears when page refreshes, since it is not save to databases
   const [todos, setTodos] = useState([
-    "Lets go for outing",
-    "I am very fond of playing futsal",
+    "Starting ...",
+    "Adding Data ... ",
   ]);
   const [input, setInput] = useState("");
 
@@ -21,21 +24,22 @@ function App() {
   return (
     <div className="App">
       <h1>Todo-App</h1>
-      <form>
-        {" "}
-        {/* onchange captures every event trigger */}
-        <input
+      {/* onchange captures every event trigger */}
+      <FormControl>
+        <InputLabel>Write A :-Todo </InputLabel>
+        <Input
           value={input}
           onChange={(event) => {
             setInput(event.target.value);
           }}
         />
-        <ButtonComponent addTodosHandler={addTodosHandler}  input={input}/>
-      </form>
+      </FormControl>
+
+      <ButtonComponent addTodosHandler={addTodosHandler} input={input} />
       <ul>
         {/* map array todos with every element todo */}
         {todos.map((todo) => (
-          <li>{todo}</li>
+          <Todo todo={todo} />
         ))}
       </ul>
     </div>
