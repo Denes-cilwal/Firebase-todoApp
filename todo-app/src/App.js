@@ -30,7 +30,7 @@ function App() {
             setInput(event.target.value);
           }}
         />
-        <ButtonComponent addTodosHandler={addTodosHandler} />
+        <ButtonComponent addTodosHandler={addTodosHandler}  input={input}/>
       </form>
       <ul>
         {/* map array todos with every element todo */}
