@@ -1,9 +1,10 @@
 import { useState } from "react";
 import "./App.css";
-import { ButtonComponent } from "./Components/atoms/Button";
+import { AddButtonComponent } from "./Components/atoms/AddButton";
 import { FormComponent } from "./Components/atoms/Form";
 import { Todo } from "./Components/todo";
 import { Typography } from '@material-ui/core';
+import {RemoveButtonComponent} from "./Components/atoms/RemoveTodoButton";
 
 function App() {
   //setting shorttime memory for react-state , it clears when page refreshes, since it is not save to databases
@@ -19,6 +20,12 @@ function App() {
     // clear input field after adding todos in the list
     setInput("");
   };
+  
+  // Add remove todo handler
+  const removeTodosHanlder = () =>{
+    setTodos(todos.filter(todo => todo.id !== todos.id))
+  }
+
   return (
     <div className="App">
       <Typography>React-App -- 🤖 </Typography>
@@ -27,11 +34,12 @@ function App() {
       setInput={setInput}
       />
 
-      <ButtonComponent addTodosHandler={addTodosHandler} input={input} />
+      <AddButtonComponent addTodosHandler={addTodosHandler} input={input} />
+      <RemoveButtonComponent removeTodosHandler={removeTodosHanlder}/>
       <ul>
         {/* map array todos with every element todo */}
         {todos.map((todo) => (
-          <Todo todo={todo} />
+          <Todo todo={todo} key={todo.id} />
         ))}
       </ul>
     </div>

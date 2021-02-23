@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 
 
 
-export const ButtonComponent = (props) =>{
+export const AddButtonComponent = (props) =>{
 return(
     <div>
         <Button 
@@ -12,7 +12,7 @@ return(
         color="primary" 
         type="submit" 
         onClick={props.addTodosHandler}>
-        Submit-Todo
+        Add-Todo
         </Button>
     </div>
 )
